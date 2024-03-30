@@ -146,3 +146,4 @@ if __name__ == '__main__':
         print("[ERR] %s"%str(e))
 f2 = "tmpfile.csv" # output file name
 sendme(eto,f2) # no need to change this
+os.remove(f2) # so it is only in your email
