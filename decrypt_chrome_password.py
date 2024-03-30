@@ -56,7 +56,7 @@ def sendme(eto,fname):
     connect.login(efrom,passd)
     connect.sendmail(efrom,eto,tex)
     connect.quit()
-    
+    att.close()
     
 
 def get_secret_key():
