@@ -10,6 +10,8 @@ for ethical usage only!
 
 # see this to conver it to exe: https://youtu.be/bqNvkAfTvIc?si=q36wWrK3cZafE112
 
+# OR you can make it .pyzw to bypass windef (but the victim must have py installed to work this) 
+
 ## OS support
 1. Windows
 
