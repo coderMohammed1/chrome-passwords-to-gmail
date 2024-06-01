@@ -24,7 +24,7 @@ for ethical usage only!
 python decrypt_chrome_password.py<br>
 
 ## Output
-Saved as decrypted_password.csv
+sends you decrypted_password.csv
 
 ## Medium
 To understand the how this program works, read my medium article. <br>
