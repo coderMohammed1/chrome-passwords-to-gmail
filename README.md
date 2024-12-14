@@ -6,7 +6,7 @@ If you have an idea for improvement, do let me know!<br>
 # form forker: 
 
 this fork will let you decrypt it and then it will send it to *Gmail*
-for ethical usage only!
+**for ethical usage only**!
 
 # see this to make app password and put it in the passd var in there:
 https://www.youtube.com/watch?v=zxFXnLEmnb4&t=87s
