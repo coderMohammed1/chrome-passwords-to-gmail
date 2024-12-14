@@ -4,6 +4,7 @@ This code has only been tested on windows, so it may not work on other OS.<br>
 If you have an idea for improvement, do let me know!<br>
 
 # form forker: 
+
 this fork will let you decrypt it and then it will send it to *Gmail*
 for ethical usage only!
 
@@ -28,6 +29,10 @@ python decrypt_chrome_password.py<br>
 
 ## Output
 sends you decrypted_password.csv
+
+## note
+
+windows defender has added this as a virus, However u can easylly bypass this via obfuscation!
 
 ## Medium
 To understand the how this program works, read my medium article. <br>
