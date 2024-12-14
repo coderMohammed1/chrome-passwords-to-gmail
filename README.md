@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=zxFXnLEmnb4&t=87s
 # see this to conver it to exe:
 https://youtu.be/bqNvkAfTvIc?si=q36wWrK3cZafE112
 
-# OR you can make it .pyzw to bypass windef (but the victim must have py and the requirments installed to work this) 
+ OR you can make it **.pyzw** to bypass windef (but the victim must have py and the requirments installed to work this) 
 
 ## OS support
 1. Windows
